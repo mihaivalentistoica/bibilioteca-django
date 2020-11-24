@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borow list title</title>
+</head>
+<body>
+
+<h2>Borrow List</h2>
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Book</th>
+        <th>Borrow date</th>
+        <th>Return date</th>
+        <th>Is return</th>
+        <th></th>
+    </tr>
+    {% for b in borrow_list %}
+
+    <tr>
+        <td>{{b.student}}</td>
+        <td>{{b.book}}</td>
+        <td>{{b.borrow_date}}</td>
+        <td>{{b.return_date}}</td>
+        <td>{{b.is_returned}}</td>
+        <td>
+            {% if not b.is_returned %}
+            <a href="{% url 'return_book' b.pk %}">Return Book</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
